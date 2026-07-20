@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Siri Dasari — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: #fbf9ff;
+    color: #1a1028;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  .nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 2.5rem;
+    background: rgba(251,249,255,0.95);
+    border-bottom: 1px solid #ede8fa;
+    position: sticky; top: 0; z-index: 100;
+    backdrop-filter: blur(12px);
+  }
+  .nav-logo {
+    font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.2rem;
+    background: linear-gradient(135deg, #8b5cf6, #ec4899);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .nav-pills { display: flex; gap: 6px; flex-wrap: wrap; }
+  .nav-pill {
+    padding: 6px 16px; border-radius: 999px; font-size: 13px; font-weight: 600;
+    border: none; cursor: pointer; transition: all 0.2s;
+    background: transparent; color: #6b7280; font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+  .nav-pill:hover { background: #8b5cf6; color: #fff; }
+
+  /* HERO */
+  .hero {
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center; gap: 3rem;
+    padding: 5rem 2.5rem 4rem;
+    background: linear-gradient(135deg, #faf5ff 0%, #fdf2f8 50%, #eff6ff 100%);
+    border-bottom: 1px solid #ede8fa;
+  }
+  @media (max-width: 700px) {
+    .hero { grid-template-columns: 1fr; text-align: center; padding: 3rem 1.5rem; }
+    .hero-photo-wrap { order: -1; }
+    .hero-bio { margin: 0 auto 1.5rem; }
+    .hero-stats { justify-content: center; }
+    .hero-btns { justify-content: center; }
+    .hero-badge { justify-content: center; }
+  }
+  .hero-photo-wrap { display: flex; justify-content: center; flex-direction: column; align-items: center; gap: 12px; }
+  .hero-photo-ring {
+    width: 210px; height: 210px; border-radius: 50%;
+    padding: 4px;
+    background: linear-gradient(135deg, #8b5cf6, #ec4899, #3b82f6);
+  }
+  .hero-photo-inner {
+    width: 100%; height: 100%; border-radius: 50%;
+    background: #c4b5fd;
+    display: flex; align-items: center; justify-content: center;
+    border: 4px solid #fbf9ff;
+    overflow: hidden;
+  }
+  .hero-photo-inner img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: block; }
+  
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: #ede9fe; color: #7c3aed; border-radius: 999px;
+    padding: 5px 14px; font-size: 12px; font-weight: 600;
+    margin-bottom: 1rem; letter-spacing: 0.04em;
+  }
+  .hero-badge-dot {
+    width: 7px; height: 7px; border-radius: 50%; background: #10b981;
+    animation: pulse-dot 1.5s ease-in-out infinite;
+  }
+  @keyframes pulse-dot { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.6; transform:scale(0.8); } }
+  .hero-name {
+    font-family: 'Syne', sans-serif; font-weight: 800;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    line-height: 1.1; letter-spacing: -0.03em;
+    color: #1a1028; margin-bottom: 0.5rem;
+  }
+  .hero-name span { background: linear-gradient(135deg, #8b5cf6, #ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .hero-role { font-size: 1rem; color: #8b5cf6; font-weight: 600; margin-bottom: 1rem; }
+  .hero-bio { color: #6b7280; font-size: 14px; line-height: 1.8; margin-bottom: 1.5rem; max-width: 44ch; }
+  .hero-stats { display: flex; gap: 2rem; margin-bottom: 1.5rem; }
+  .stat { text-align: center; }
+  .stat-num { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.4rem; color: #8b5cf6; }
+  .stat-label { font-size: 11px; color: #9ca3af; letter-spacing: 0.05em; }
+  .hero-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+  .btn {
+    padding: 11px 22px; border-radius: 999px; font-size: 13px; font-weight: 600;
+    border: none; cursor: pointer; transition: all 0.2s; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+  .btn-grad { background: linear-gradient(135deg, #8b5cf6, #ec4899); color: #fff; }
+  .btn-grad:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(139,92,246,0.35); }
+  .btn-ghost { background: transparent; color: #8b5cf6; border: 1.5px solid #c4b5fd; }
+  .btn-ghost:hover { background: #f5f3ff; }
+
+  /* SECTIONS */
+  .section { padding: 4rem 2.5rem; }
+  .section-alt { background: linear-gradient(135deg, #faf5ff 0%, #fdf2f8 100%); }
+  .section-head { display: flex; align-items: center; gap: 14px; margin-bottom: 2.5rem; }
+  .section-title { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.8rem; letter-spacing: -0.02em; color: #1a1028; white-space: nowrap; }
+  .section-line { flex: 1; height: 1px; background: linear-gradient(to right, #c4b5fd, transparent); }
+
+  /* SKILLS */
+  .skill-filter { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .filter-btn {
+    padding: 6px 18px; border-radius: 999px; border: 1.5px solid #e5e7eb;
+    background: transparent; font-size: 12px; font-weight: 600; cursor: pointer;
+    color: #6b7280; transition: all 0.2s; font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+  .filter-btn.on { color: #fff; border-color: transparent; }
+  .filter-btn[data-cat="all"].on  { background: #1a1028; }
+  .filter-btn[data-cat="prog"].on { background: #8b5cf6; }
+  .filter-btn[data-cat="data"].on { background: #ec4899; }
+  .filter-btn[data-cat="viz"].on  { background: #3b82f6; }
+  .filter-btn[data-cat="tools"].on{ background: #10b981; }
+
+  .skills-cloud { display: flex; flex-wrap: wrap; gap: 10px; }
+  .skill-pill {
+    display: flex; align-items: center; gap: 7px;
+    padding: 9px 18px; border-radius: 999px; font-size: 13px; font-weight: 600;
+    border: 1.5px solid; cursor: default; transition: transform 0.15s, opacity 0.2s;
+  }
+  .skill-pill:hover { transform: translateY(-2px); }
+  .skill-pill.prog  { background: #ede9fe; color: #6d28d9; border-color: #c4b5fd; }
+  .skill-pill.data  { background: #fce7f3; color: #be185d; border-color: #f9a8d4; }
+  .skill-pill.viz   { background: #eff6ff; color: #1d4ed8; border-color: #93c5fd; }
+  .skill-pill.tools { background: #ecfdf5; color: #065f46; border-color: #6ee7b7; }
+  .skill-pill.hidden { display: none; }
+  .skill-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .skill-pill.prog  .skill-dot { background: #8b5cf6; }
+  .skill-pill.data  .skill-dot { background: #ec4899; }
+  .skill-pill.viz   .skill-dot { background: #3b82f6; }
+  .skill-pill.tools .skill-dot { background: #10b981; }
+
+  /* PROJECTS */
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+  .proj-card {
+    background: #fff; border-radius: 18px; padding: 1.75rem;
+    border: 1.5px solid #ede8fa;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative; overflow: hidden;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .proj-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; }
+  .proj-card:nth-child(1)::before { background: linear-gradient(90deg, #8b5cf6, #ec4899); }
+  .proj-card:nth-child(2)::before { background: linear-gradient(90deg, #3b82f6, #06b6d4); }
+  .proj-card:nth-child(3)::before { background: linear-gradient(90deg, #10b981, #84cc16); }
+  .proj-card:hover { transform: translateY(-5px); box-shadow: 0 16px 48px rgba(139,92,246,0.15); }
+  .proj-num { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; color: #a78bfa; margin-bottom: 0.6rem; }
+  .proj-name { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.15rem; margin-bottom: 0.75rem; color: #1a1028; }
+  .proj-bullets { list-style: none; margin-bottom: 1.25rem; }
+  .proj-bullets li { font-size: 12.5px; color: #6b7280; padding: 3px 0; display: flex; gap: 8px; line-height: 1.6; }
+  .proj-bullets li::before { content: '•'; color: #8b5cf6; flex-shrink: 0; font-weight: bold; }
+  .proj-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .proj-tag { font-size: 11px; font-weight: 600; padding: 4px 11px; border-radius: 999px; }
+  .proj-tag.p { background: #ede9fe; color: #6d28d9; }
+  .proj-tag.b { background: #eff6ff; color: #1d4ed8; }
+  .proj-tag.g { background: #ecfdf5; color: #065f46; }
+
+  /* EXPERIENCE */
+  .exp-timeline { display: flex; flex-direction: column; }
+  .exp-item {
+    display: grid; grid-template-columns: 150px 1fr;
+    gap: 2rem; padding: 1.75rem 0;
+    border-bottom: 1px solid #f3f0ff;
+  }
+  .exp-item:last-child { border-bottom: none; }
+  @media (max-width: 600px) {
+    .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+  }
+  .exp-period { font-size: 11px; font-weight: 700; color: #a78bfa; letter-spacing: 0.08em; line-height: 1.5; }
+  .exp-location { font-size: 11px; color: #9ca3af; margin-top: 4px; }
+  .exp-role { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.05rem; color: #1a1028; margin-bottom: 3px; }
+  .exp-company { font-size: 13px; color: #8b5cf6; font-weight: 600; margin-bottom: 0.75rem; }
+  .exp-bullets { list-style: none; }
+  .exp-bullets li { font-size: 13px; color: #6b7280; padding: 3px 0; display: flex; gap: 8px; line-height: 1.65; }
+  .exp-bullets li::before { content: '›'; color: #c4b5fd; flex-shrink: 0; font-weight: 700; font-size: 15px; }
+
+  /* CERTS */
+  .certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.1rem; }
+  .cert-card {
+    padding: 1.35rem 1.5rem; border-radius: 16px; border: 1.5px solid;
+    transition: transform 0.2s;
+    display: flex; align-items: flex-start; gap: 14px;
+  }
+  .cert-card:hover { transform: translateY(-3px); }
+  .cert-card:nth-child(1) { background: #faf5ff; border-color: #ddd6fe; }
+  .cert-card:nth-child(2) { background: #fdf4ff; border-color: #f0abfc; }
+  .cert-card:nth-child(3) { background: #eff6ff; border-color: #bfdbfe; }
+  .cert-card:nth-child(4) { background: #ecfdf5; border-color: #a7f3d0; }
+  .cert-icon {
+    width: 40px; height: 40px; border-radius: 12px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; font-weight: 700;
+  }
+  .cert-card:nth-child(1) .cert-icon { background: #ede9fe; color: #7c3aed; }
+  .cert-card:nth-child(2) .cert-icon { background: #fae8ff; color: #a21caf; }
+  .cert-card:nth-child(3) .cert-icon { background: #dbeafe; color: #1d4ed8; }
+  .cert-card:nth-child(4) .cert-icon { background: #d1fae5; color: #047857; }
+  .cert-name { font-size: 13px; font-weight: 600; color: #1a1028; line-height: 1.4; }
+  .cert-issuer { font-size: 11px; color: #9ca3af; margin-top: 3px; }
+
+  /* CONTACT */
+  .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
+  @media (max-width: 640px) { .contact-wrap { grid-template-columns: 1fr; } }
+  .contact-card { background: #fff; border-radius: 18px; padding: 2rem; border: 1.5px solid #ede8fa; }
+  .contact-intro { font-size: 14px; color: #6b7280; line-height: 1.8; margin-bottom: 1.5rem; }
+  .contact-links { display: flex; flex-direction: column; gap: 10px; }
+  .contact-link {
+    display: flex; align-items: center; gap: 14px;
+    padding: 13px 16px; border-radius: 14px;
+    border: 1.5px solid #f3f0ff; text-decoration: none;
+    color: #1a1028; transition: all 0.2s; font-size: 13px; font-weight: 500;
+  }
+  .contact-link:hover { border-color: #c4b5fd; background: #faf5ff; }
+  .contact-icon {
+    width: 38px; height: 38px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 700; flex-shrink: 0;
+  }
+  .ci-email { background: #fce7f3; color: #be185d; }
+  .ci-li    { background: #dbeafe; color: #1d4ed8; }
+  .ci-phone { background: #ecfdf5; color: #065f46; }
+  .contact-sub { font-size: 11px; color: #9ca3af; margin-top: 1px; }
+  .fun-card {
+    background: linear-gradient(135deg, #8b5cf6, #ec4899);
+    border-radius: 18px; padding: 2rem; color: #fff;
+  }
+  .fun-card-title { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.2rem; margin-bottom: 0.6rem; }
+  .fun-card-sub { font-size: 13px; opacity: 0.88; line-height: 1.75; margin-bottom: 1.5rem; }
+  .fun-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .fun-tag { background: rgba(255,255,255,0.22); padding: 6px 14px; border-radius: 999px; font-size: 12px; font-weight: 600; }
+
+  /* FOOTER */
+  footer {
+    padding: 2rem 2.5rem; text-align: center; background: #1a1028; color: #6b7280; font-size: 13px;
+  }
+  footer span { color: #a78bfa; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-logo">Siri Dasari</div>
+  <div class="nav-pills">
+    <button class="nav-pill" onclick="goTo('skills')">Skills</button>
+    <button class="nav-pill" onclick="goTo('projects')">Projects</button>
+    <button class="nav-pill" onclick="goTo('experience')">Experience</button>
+    <button class="nav-pill" onclick="goTo('certs')">Certs</button>
+    <button class="nav-pill" onclick="goTo('contact')">Contact</button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-photo-wrap">
+    <div class="hero-photo-ring">
+      <div class="hero-photo-inner">
+        <img src="portfolio.jpeg" alt="Siri Dasari">
+      </div>
+    </div>
+  </div>
+  <div class="hero-text">
+    <div class="hero-badge"><div class="hero-badge-dot"></div> Open to opportunities</div>
+    <div class="hero-name">Siri Chandana <span>Dasari</span></div>
+    <div class="hero-role">Data Engineer &amp; Analyst &nbsp;·&nbsp; MS CS @ UNT</div>
+    <div class="hero-bio">Results-driven Computer Science graduate skilled in data modeling, SQL optimization, predictive analytics, and software development. Experienced in distributed database design, ML models, and workflow automation.</div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">3.7</div><div class="stat-label">GPA</div></div>
+      <div class="stat"><div class="stat-num">3+</div><div class="stat-label">Projects</div></div>
+      <div class="stat"><div class="stat-num">4</div><div class="stat-label">Certs</div></div>
+    </div>
+    <div class="hero-btns">
+      <a href="#projects" class="btn btn-grad">View Projects</a>
+      <a href="mailto:siridasari647@gmail.com" class="btn btn-ghost">Get in Touch</a>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="skills">
+  <div class="section-head">
+    <div class="section-title">Skills &amp; Technologies</div>
+    <div class="section-line"></div>
+  </div>
+  <div class="skill-filter">
+    <button class="filter-btn on" data-cat="all" onclick="filterSkills('all', this)">All</button>
+    <button class="filter-btn" data-cat="prog" onclick="filterSkills('prog', this)">Programming</button>
+    <button class="filter-btn" data-cat="data" onclick="filterSkills('data', this)">Data &amp; Analytics</button>
+    <button class="filter-btn" data-cat="viz" onclick="filterSkills('viz', this)">Visualization</button>
+    <button class="filter-btn" data-cat="tools" onclick="filterSkills('tools', this)">Tools &amp; Platforms</button>
+  </div>
+  <div class="skills-cloud" id="skills-cloud">
+    <div class="skill-pill prog"><div class="skill-dot"></div>Python</div>
+    <div class="skill-pill prog"><div class="skill-dot"></div>SQL</div>
+    <div class="skill-pill prog"><div class="skill-dot"></div>HTML5</div>
+    <div class="skill-pill prog"><div class="skill-dot"></div>CSS3</div>
+    <div class="skill-pill data"><div class="skill-dot"></div>Data Modeling</div>
+    <div class="skill-pill data"><div class="skill-dot"></div>Database Fragmentation</div>
+    <div class="skill-pill data"><div class="skill-dot"></div>Exploratory Data Analysis (EDA)</div>
+    <div class="skill-pill data"><div class="skill-dot"></div>Data Preprocessing &amp; Cleaning</div>
+    <div class="skill-pill data"><div class="skill-dot"></div>Feature Engineering</div>
+    <div class="skill-pill data"><div class="skill-dot"></div>Predictive Analytics</div>
+    <div class="skill-pill viz"><div class="skill-dot"></div>Tableau</div>
+    <div class="skill-pill viz"><div class="skill-dot"></div>Interactive Dashboards</div>
+    <div class="skill-pill tools"><div class="skill-dot"></div>PostgreSQL / MySQL</div>
+    <div class="skill-pill tools"><div class="skill-dot"></div>Microsoft Azure</div>
+    <div class="skill-pill tools"><div class="skill-dot"></div>Figma</div>
+    <div class="skill-pill tools"><div class="skill-dot"></div>Titanium</div>
+    <div class="skill-pill tools"><div class="skill-dot"></div>PARiConnect</div>
+    <div class="skill-pill tools"><div class="skill-dot"></div>ASEBA</div>
+    <div class="skill-pill tools"><div class="skill-dot"></div>Git</div>
+  </div>
+</section>
+
+<section class="section" id="projects">
+  <div class="section-head">
+    <div class="section-title">Featured Projects</div>
+    <div class="section-line"></div>
+  </div>
+  <div class="projects-grid">
+    <div class="proj-card">
+      <div>
+        <div class="proj-num">01 &nbsp;·&nbsp; FALL 2025</div>
+        <div class="proj-name">Global Distributed Bookstore Database System</div>
+        <ul class="proj-bullets">
+          <li>Architected a distributed database using horizontal fragmentation across 3 distinct server sites to optimize transaction speed and fault tolerance.</li>
+          <li>Designed site-level schema and SQL query protocols for high-value transactional data, lowering latency across multi-site queries over 6 project milestones.</li>
+          <li>Engineered robust cross-site database connectivity and synchronization scripts to guarantee data consistency and seamless query execution.</li>
+        </ul>
+      </div>
+      <div class="proj-tags">
+        <span class="proj-tag p">SQL</span>
+        <span class="proj-tag p">Database Fragmentation</span>
+        <span class="proj-tag b">Distributed DB</span>
+        <span class="proj-tag g">Data Modeling</span>
+      </div>
+    </div>
+    <div class="proj-card">
+      <div>
+        <div class="proj-num">02 &nbsp;·&nbsp; FALL 2025</div>
+        <div class="proj-name">Texas Airbnb Price Prediction Model</div>
+        <ul class="proj-bullets">
+          <li>Built and evaluated predictive machine learning models in Python to forecast average rental prices across Texas markets.</li>
+          <li>Conducted data cleaning, feature engineering, and cross-model performance evaluation (MAE, RMSE, etc.) to enhance host pricing strategy recommendations.</li>
+          <li>Utilized Python libraries (Pandas, Scikit-Learn, Matplotlib) to handle missing values, encode categorical variables, and identify high-impact price drivers.</li>
+        </ul>
+      </div>
+      <div class="proj-tags">
+        <span class="proj-tag p">Python</span>
+        <span class="proj-tag b">Pandas &amp; Scikit-Learn</span>
+        <span class="proj-tag g">Predictive Modeling</span>
+        <span class="proj-tag g">Feature Engineering</span>
+      </div>
+    </div>
+    <div class="proj-card">
+      <div>
+        <div class="proj-num">03 &nbsp;·&nbsp; SPRING 2025</div>
+        <div class="proj-name">Netflix Content &amp; Recommendation Insights</div>
+        <ul class="proj-bullets">
+          <li>Performed Exploratory Data Analysis (EDA) on a dataset of TV shows and movies to identify viewing trends, content distribution, and catalog shifts.</li>
+          <li>Developed interactive dashboards and visual reports to map content similarity and support recommendation engines.</li>
+          <li>Extracted actionable content strategy insights by segmenting titles by rating, genre, and release year to uncover streaming catalog growth patterns.</li>
+        </ul>
+      </div>
+      <div class="proj-tags">
+        <span class="proj-tag b">Tableau</span>
+        <span class="proj-tag g">EDA</span>
+        <span class="proj-tag g">Interactive Dashboards</span>
+        <span class="proj-tag p">Data Analysis</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="experience">
+  <div class="section-head">
+    <div class="section-title">Professional Experience</div>
+    <div class="section-line"></div>
+  </div>
+  <div class="exp-timeline">
+    <div class="exp-item">
+      <div>
+        <div class="exp-period">May 2025 – May 2026</div>
+        <div class="exp-location">Denton, TX</div>
+      </div>
+      <div>
+        <div class="exp-role">Student Assistant</div>
+        <div class="exp-company">Child and Family Resource Clinic · UNT</div>
+        <ul class="exp-bullets">
+          <li>Managed and sanitized clinical datasets across specialized management platforms (Titanium, ASEBA, PARiConnect), ensuring 100% data integrity and regulatory compliance.</li>
+          <li>Streamlined system ticketing workflows and improved data intake processes, reducing resolution time for administrative and technical requests.</li>
+          <li>Built automated reporting templates and analytical summaries from raw assessment data to support clinical decision-making.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div>
+        <div class="exp-period">Jul 2023 – Oct 2023</div>
+        <div class="exp-location">Hyderabad, India</div>
+      </div>
+      <div>
+        <div class="exp-role">Software Engineer Intern</div>
+        <div class="exp-company">Areksoft Pvt Ltd</div>
+        <ul class="exp-bullets">
+          <li>Collaborated on frontend interface development using HTML, CSS, and Python, integrating high-fidelity Figma designs into responsive user workflows.</li>
+          <li>Mapped user experience (UX) journeys across core CRM modules (Recordrr CRM) to optimize navigation and data input efficiency.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="certs">
+  <div class="section-head">
+    <div class="section-title">Certifications</div>
+    <div class="section-line"></div>
+  </div>
+  <div class="certs-grid">
+    <div class="cert-card">
+      <div class="cert-icon">★</div>
+      <div>
+        <div class="cert-name">Tableau Desktop Foundations</div>
+        <div class="cert-issuer">Salesforce Certified</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">◈</div>
+      <div>
+        <div class="cert-name">SQL — Basic &amp; Intermediate</div>
+        <div class="cert-issuer">HackerRank</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">▲</div>
+      <div>
+        <div class="cert-name">Azure Fundamentals (AZ-900)</div>
+        <div class="cert-issuer">Microsoft</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">●</div>
+      <div>
+        <div class="cert-name">Google Data Analytics</div>
+        <div class="cert-issuer">Google</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="contact">
+  <div class="section-head">
+    <div class="section-title">Get in Touch</div>
+    <div class="section-line"></div>
+  </div>
+  <div class="contact-wrap">
+    <div class="contact-card">
+      <div class="contact-intro">Open to full-time roles in Data Engineering, Data Analytics, and Software Engineering. Feel free to connect or reach out!</div>
+      <div class="contact-links">
+        <a href="mailto:siridasari647@gmail.com" class="contact-link">
+          <div class="contact-icon ci-email">@</div>
+          <div><div style="font-weight:600;">siridasari647@gmail.com</div><div class="contact-sub">Email</div></div>
+        </a>
+        <a href="https://linkedin.com/in/sirichandanadasari/" class="contact-link" target="_blank">
+          <div class="contact-icon ci-li">in</div>
+          <div><div style="font-weight:600;">linkedin.com/in/sirichandanadasari</div><div class="contact-sub">LinkedIn</div></div>
+        </a>
+        <a href="tel:+14697342088" class="contact-link">
+          <div class="contact-icon ci-phone">#</div>
+          <div><div style="font-weight:600;">+1 (469) 734-2088</div><div class="contact-sub">Phone</div></div>
+        </a>
+      </div>
+    </div>
+    <div class="fun-card">
+      <div class="fun-card-title">Education Background</div>
+      <div class="fun-card-sub">
+        <strong>MS in Computer Science</strong> (GPA: 3.7/4.0)<br>University of North Texas · Aug 2024 – May 2026<br><br>
+        <strong>B.Tech in Computer Science (Data Science)</strong> (GPA: 3.5/4.0)<br>Koneru Lakshmaiah College of Engineering · June 2020 – May 2024
+      </div>
+      <div class="fun-tags">
+        <span class="fun-tag">Data Modeling</span>
+        <span class="fun-tag">Machine Learning</span>
+        <span class="fun-tag">Distributed Databases</span>
+        <span class="fun-tag">Analytics</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>Siri Chandana Dasari &nbsp;·&nbsp; <span>MS CS · University of North Texas</span> &nbsp;·&nbsp; 2026</div>
+</footer>
+
+<script>
+  function goTo(id) {
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function filterSkills(cat, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+    document.querySelectorAll('.skill-pill').forEach(pill => {
+      if (cat === 'all' || pill.classList.contains(cat)) {
+        pill.classList.remove('hidden');
+      } else {
+        pill.classList.add('hidden');
+      }
+    });
+  }
+</script>
+</body>
+</html>
