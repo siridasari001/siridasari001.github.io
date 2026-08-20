@@ -157,6 +157,15 @@
   .proj-card:nth-child(1)::before { background: linear-gradient(90deg, #8b5cf6, #ec4899); }
   .proj-card:nth-child(2)::before { background: linear-gradient(90deg, #3b82f6, #06b6d4); }
   .proj-card:nth-child(3)::before { background: linear-gradient(90deg, #10b981, #84cc16); }
+  .proj-card:nth-child(4)::before { background: linear-gradient(90deg, #f59e0b, #ef4444); }
+  .proj-card:nth-child(5)::before { background: linear-gradient(90deg, #6366f1, #14b8a6); }
+  .proj-link {
+    display: inline-flex; align-items: center; gap: 5px;
+    margin-top: 1rem; padding: 7px 12px; border-radius: 999px;
+    background: #f5f3ff; color: #6d28d9; text-decoration: none;
+    font-size: 11px; font-weight: 700; transition: all 0.2s;
+  }
+  .proj-link:hover { background: #ede9fe; transform: translateY(-1px); }
   .proj-card:hover { transform: translateY(-5px); box-shadow: 0 16px 48px rgba(139,92,246,0.15); }
   .proj-num { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; color: #a78bfa; margin-bottom: 0.6rem; }
   .proj-name { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.15rem; margin-bottom: 0.75rem; color: #1a1028; }
@@ -278,7 +287,7 @@
     <div class="hero-bio">Results-driven Computer Science graduate skilled in data modeling, SQL optimization, predictive analytics, and software development. Experienced in distributed database design, ML models, and workflow automation.</div>
     <div class="hero-stats">
       <div class="stat"><div class="stat-num">3.7</div><div class="stat-label">GPA</div></div>
-      <div class="stat"><div class="stat-num">3+</div><div class="stat-label">Projects</div></div>
+      <div class="stat"><div class="stat-num">5</div><div class="stat-label">Featured Projects</div></div>
       <div class="stat"><div class="stat-num">4</div><div class="stat-label">Certs</div></div>
     </div>
     <div class="hero-btns">
@@ -311,6 +320,10 @@
     <div class="skill-pill data"><div class="skill-dot"></div>Data Preprocessing &amp; Cleaning</div>
     <div class="skill-pill data"><div class="skill-dot"></div>Feature Engineering</div>
     <div class="skill-pill data"><div class="skill-dot"></div>Predictive Analytics</div>
+    <div class="skill-pill data"><div class="skill-dot"></div>Anomaly Detection</div>
+    <div class="skill-pill data"><div class="skill-dot"></div>Data Quality Monitoring</div>
+    <div class="skill-pill data"><div class="skill-dot"></div>TF-IDF &amp; Cosine Similarity</div>
+    <div class="skill-pill data"><div class="skill-dot"></div>kNN</div>
     <div class="skill-pill viz"><div class="skill-dot"></div>Tableau</div>
     <div class="skill-pill viz"><div class="skill-dot"></div>Interactive Dashboards</div>
     <div class="skill-pill tools"><div class="skill-dot"></div>PostgreSQL / MySQL</div>
@@ -320,6 +333,9 @@
     <div class="skill-pill tools"><div class="skill-dot"></div>PARiConnect</div>
     <div class="skill-pill tools"><div class="skill-dot"></div>ASEBA</div>
     <div class="skill-pill tools"><div class="skill-dot"></div>Git</div>
+    <div class="skill-pill tools"><div class="skill-dot"></div>Streamlit</div>
+    <div class="skill-pill tools"><div class="skill-dot"></div>SQLite</div>
+    <div class="skill-pill tools"><div class="skill-dot"></div>Jupyter / Google Colab</div>
   </div>
 </section>
 
@@ -335,49 +351,101 @@
         <div class="proj-name">Global Distributed Bookstore Database System</div>
         <ul class="proj-bullets">
           <li>Architected a distributed database using horizontal fragmentation across 3 distinct server sites to optimize transaction speed and fault tolerance.</li>
-          <li>Designed site-level schema and SQL query protocols for high-value transactional data, lowering latency across multi-site queries over 6 project milestones.</li>
-          <li>Engineered robust cross-site database connectivity and synchronization scripts to guarantee data consistency and seamless query execution.</li>
+          <li>Designed site-level schemas and SQL query protocols for high-value transactional data across multiple sites.</li>
+          <li>Engineered cross-site connectivity and synchronization scripts to maintain data consistency and seamless query execution.</li>
         </ul>
       </div>
-      <div class="proj-tags">
-        <span class="proj-tag p">SQL</span>
-        <span class="proj-tag p">Database Fragmentation</span>
-        <span class="proj-tag b">Distributed DB</span>
-        <span class="proj-tag g">Data Modeling</span>
+      <div>
+        <div class="proj-tags">
+          <span class="proj-tag p">SQL</span>
+          <span class="proj-tag p">Database Fragmentation</span>
+          <span class="proj-tag b">Distributed DB</span>
+          <span class="proj-tag g">Data Modeling</span>
+        </div>
       </div>
     </div>
+
     <div class="proj-card">
       <div>
         <div class="proj-num">02 &nbsp;·&nbsp; FALL 2025</div>
         <div class="proj-name">Texas Airbnb Price Prediction Model</div>
         <ul class="proj-bullets">
-          <li>Built and evaluated predictive machine learning models in Python to forecast average rental prices across Texas markets.</li>
-          <li>Conducted data cleaning, feature engineering, and cross-model performance evaluation (MAE, RMSE, etc.) to enhance host pricing strategy recommendations.</li>
-          <li>Utilized Python libraries (Pandas, Scikit-Learn, Matplotlib) to handle missing values, encode categorical variables, and identify high-impact price drivers.</li>
+          <li>Built and evaluated predictive machine learning models in Python to forecast rental prices across Texas markets.</li>
+          <li>Performed data cleaning, feature engineering, and cross-model evaluation using MAE, RMSE, and R².</li>
+          <li>Used Pandas and Scikit-Learn to identify high-impact price drivers and compare regression approaches.</li>
         </ul>
       </div>
-      <div class="proj-tags">
-        <span class="proj-tag p">Python</span>
-        <span class="proj-tag b">Pandas &amp; Scikit-Learn</span>
-        <span class="proj-tag g">Predictive Modeling</span>
-        <span class="proj-tag g">Feature Engineering</span>
+      <div>
+        <div class="proj-tags">
+          <span class="proj-tag p">Python</span>
+          <span class="proj-tag b">Pandas &amp; Scikit-Learn</span>
+          <span class="proj-tag g">Predictive Modeling</span>
+          <span class="proj-tag g">Feature Engineering</span>
+        </div>
       </div>
     </div>
+
     <div class="proj-card">
       <div>
         <div class="proj-num">03 &nbsp;·&nbsp; SPRING 2025</div>
         <div class="proj-name">Netflix Content &amp; Recommendation Insights</div>
         <ul class="proj-bullets">
-          <li>Performed Exploratory Data Analysis (EDA) on a dataset of TV shows and movies to identify viewing trends, content distribution, and catalog shifts.</li>
-          <li>Developed interactive dashboards and visual reports to map content similarity and support recommendation engines.</li>
-          <li>Extracted actionable content strategy insights by segmenting titles by rating, genre, and release year to uncover streaming catalog growth patterns.</li>
+          <li>Performed Exploratory Data Analysis (EDA) on TV shows and movies to identify viewing trends, content distribution, and catalog shifts.</li>
+          <li>Developed interactive dashboards and visual reports to explore content similarity and recommendation insights.</li>
+          <li>Segmented titles by rating, genre, and release year to uncover streaming catalog growth patterns.</li>
         </ul>
       </div>
-      <div class="proj-tags">
-        <span class="proj-tag b">Tableau</span>
-        <span class="proj-tag g">EDA</span>
-        <span class="proj-tag g">Interactive Dashboards</span>
-        <span class="proj-tag p">Data Analysis</span>
+      <div>
+        <div class="proj-tags">
+          <span class="proj-tag b">Tableau</span>
+          <span class="proj-tag g">EDA</span>
+          <span class="proj-tag g">Interactive Dashboards</span>
+          <span class="proj-tag p">Data Analysis</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div>
+        <div class="proj-num">04 &nbsp;·&nbsp; 2026</div>
+        <div class="proj-name">DataSentinel — Data Quality &amp; Anomaly Detection Platform</div>
+        <ul class="proj-bullets">
+          <li>Built a Python-based data quality monitoring platform for detecting missing values, duplicate records, schema violations, and behavioral anomalies.</li>
+          <li>Implemented reusable validation and anomaly-detection workflows with Pandas and NumPy, backed by SQLite for structured data storage.</li>
+          <li>Created an interactive Streamlit dashboard to surface data-quality issues and make dataset health easier to inspect.</li>
+        </ul>
+      </div>
+      <div>
+        <div class="proj-tags">
+          <span class="proj-tag p">Python</span>
+          <span class="proj-tag b">Pandas &amp; NumPy</span>
+          <span class="proj-tag g">Data Quality</span>
+          <span class="proj-tag g">Anomaly Detection</span>
+          <span class="proj-tag b">Streamlit</span>
+        </div>
+        <a class="proj-link" href="https://github.com/siridasari001/DataSentinel" target="_blank" rel="noopener">↗ View on GitHub</a>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div>
+        <div class="proj-num">05 &nbsp;·&nbsp; 2026</div>
+        <div class="proj-name">System Call Intrusion Detection</div>
+        <ul class="proj-bullets">
+          <li>Implemented process-level intrusion detection by learning normal behavior from system call sequences and identifying potentially intrusive processes.</li>
+          <li>Represented system-call sequences using a TF-IDF-inspired approach and measured behavioral similarity with cosine similarity.</li>
+          <li>Applied k-Nearest Neighbors (kNN) anomaly scoring to distinguish unusual process behavior in a Jupyter/Google Colab workflow.</li>
+        </ul>
+      </div>
+      <div>
+        <div class="proj-tags">
+          <span class="proj-tag p">Python</span>
+          <span class="proj-tag b">TF-IDF</span>
+          <span class="proj-tag g">Cosine Similarity</span>
+          <span class="proj-tag g">kNN</span>
+          <span class="proj-tag p">Anomaly Detection</span>
+        </div>
+        <a class="proj-link" href="https://github.com/siridasari001/system-call-intrusion-detection" target="_blank" rel="noopener">↗ View on GitHub</a>
       </div>
     </div>
   </div>
@@ -465,7 +533,7 @@
   </div>
   <div class="contact-wrap">
     <div class="contact-card">
-      <div class="contact-intro">Open to full-time roles in Data Engineering, Data Analytics, and Software Engineering. Feel free to connect or reach out!</div>
+      <div class="contact-intro">Open to full-time roles in Data Engineering, Data Analytics, Machine Learning, and Software Engineering. Feel free to connect or reach out!</div>
       <div class="contact-links">
         <a href="mailto:siridasari647@gmail.com" class="contact-link">
           <div class="contact-icon ci-email">@</div>
